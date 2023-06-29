@@ -1,0 +1,1088 @@
+// colors
+
+$red-light: #bf2c25;
+$red: #ad1f26;
+$red-dark: #971b25;
+$red-border: #6e0e31;
+$red-border-internal: #7a162f;
+$gold-light: #cab58c;
+$gold: #bfa874;
+$gold-dark: #b79a62;
+$gold-border: #986f44;
+$blue: #96cbd9;
+$skin: #f7c4a5;
+$skin-shadow: #ee976b;
+$hair: #292626;
+
+// variables
+
+$bd: 8px;
+
+// utils
+
+@mixin box($w, $h) {
+  height: $h;
+  width: $w;
+}
+
+@mixin pse($w, $h, $c: "") {
+  height: $h;
+  width: $w;
+  content: $c;
+  position: absolute;
+}
+
+@mixin patl($t, $l) {
+  position: absolute;
+  top: $t;
+  left: $l;
+}
+
+@mixin patr($t, $r) {
+  position: absolute;
+  top: $t;
+  right: $r;
+}
+
+@mixin pabl($b, $l) {
+  position: absolute;
+  bottom: $b;
+  left: $l;
+}
+
+@mixin pabr($b, $r) {
+  position: absolute;
+  bottom: $b;
+  right: $r;
+}
+
+//base styles
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  outline: none;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  user-select: none;
+}
+
+*:focus{
+  outline: none;
+}
+
+
+body {
+  background-color: #111;
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  
+  &::before{
+    @include pse(100%,40px,"Click on Mask");
+    text-align:right;
+    bottom: 0;
+    color: #fff;
+    position: fixed;
+    padding: 15px;
+  }
+}
+
+.ironman {
+  @include box(240px, 351px);
+  position: relative;
+  
+  .top {
+    .part-1 {
+      @include box(206px, 39px);
+      @include patl(0, 50%);
+      transform: translatex(-50%);
+      overflow: hidden;
+
+      &::after {
+        @include pse(240px, 156px);
+        top: 0;
+        left: -17px;
+        background-image: linear-gradient(
+          90deg,
+          $red-dark 30px,
+          $red-border-internal 30px,
+          $red-border-internal 38px,
+          $red-dark 38px,
+          $red-dark 50%,
+          $red 50%,
+          $red 180px,
+          $red-dark 180px,
+          $red-dark 186px,
+          $red-border-internal 186px,
+          $red-border-internal 194px,
+          $red 194px
+        );
+        border-radius: 50%;
+        border: $bd solid $red-border;
+      }
+    }
+
+    .part-2 {
+      @include box(210px, 15px);
+      @include patl(38px, 15px);
+      border-left: $bd solid $red-border;
+      border-right: $bd solid $red-border;
+      border-radius: 1% 1% 0% 0% / 100% 100% 0% 0%;
+      background-image: linear-gradient(
+        90deg,
+        $red-dark 15px,
+        $red-border-internal 15px,
+        $red-border-internal 23px,
+        $red-dark 23px,
+        $red-dark 50%,
+        $red 50%,
+        $red 165px,
+        $red-dark 165px,
+        $red-dark 171px,
+        $red-border-internal 171px,
+        $red-border-internal 179px,
+        $red 179px
+      );
+      overflow: hidden;
+      z-index: 2;
+      &::after,
+      &::before {
+        @include pse(10px, 30px);
+        top: 1px;
+        border-radius: 50%;
+      }
+
+      &::after {
+        left: 0;
+        box-shadow: -3px -3px $red-border;
+      }
+
+      &::before {
+        right: 0;
+        box-shadow: 3px -3px $red-border;
+      }
+    }
+
+    .part-3 {
+      @include box(228px, 68px);
+      @include patl(53px, 6px);
+      border-left: $bd solid $red-border;
+      border-right: $bd solid $red-border;
+      border-radius: 8% 8% 0% 0% / 100% 100% 0% 0%;
+      box-shadow: 0 -9px $red-border;
+      background-image: linear-gradient(
+          80deg,
+          transparent 5px,
+          $red-border-internal 6px,
+          $red-border-internal 12px,
+          transparent 13px
+        ),
+        linear-gradient(
+          100deg,
+          transparent 202px,
+          $red-light 203px,
+          $red-light 208px,
+          $red-border-internal 209px,
+          $red-border-internal 217px,
+          transparent 218px),
+        linear-gradient(
+          90deg,
+          $red-dark 24px,
+          $red-border-internal 24px,
+          $red-border-internal 32px,
+          $red-dark 32px,
+          $red-dark 50%,
+          $red 50%,
+          $red 174px,
+          $red-dark 174px,
+          $red-dark 180px,
+          $red-border-internal 180px,
+          $red-border-internal 188px,
+          $red 188px);
+      z-index: 1;
+
+      &::after {
+        @include pse(3px, 3px);
+        background-color: $red-dark;
+        top: -1px;
+        left: 9px;
+      }
+
+      &::before {
+        @include pse(3px, 3px);
+        background-color: $red;
+        top: -1px;
+        right: 9px;
+      }
+    }
+  }
+
+  .center {
+    @include box(90px, 112px);
+    @include patl(10px, 75px);
+    overflow: hidden;
+    z-index: 4;
+
+    .part-1 {
+      @include box(90px, 70px);
+      @include patl(0, 0);
+      border: $bd solid $red-border;
+      border-radius: 50% 50% 20% 20% / 7% 7% 93% 93%;
+      background-image: linear-gradient(76deg, $red 20px, $red-dark 21px);
+    }
+
+    .part-2 {
+      @include box(90px, 70px);
+      @include patl(44px, 0);
+      overflow: hidden;
+
+      &::after {
+        @include pse(90px, 56px);
+        top: 12px;
+        left: 0px;
+        border-radius: 10px;
+        border: $bd solid $red-border;
+        border-top: none;
+      }
+
+      &::before {
+        @include pse(130px, 79px);
+        top: 0;
+        left: -20px;
+        border-radius: 50%;
+        border: $bd solid $red-border;
+        box-shadow: inset 0 3px $red-light;
+        background-color: $red-light;
+        background-image: radial-gradient(transparent 49%, $red-dark 50%),
+          radial-gradient($red 49%, transparent 50%);
+        background-size: 266px 296px, 266px 296px;
+        background-position: -150px 50%, -2px 60%;
+      }
+    }
+  }
+
+  .ears {
+    .top {
+      @include box(240px, 66px);
+      @include patl(121px, 0);
+      border-left: $bd solid $red-border;
+      border-right: $bd solid $red-border;
+      border-radius: 6% 6% 0% 0% / 28% 28% 48% 48%;
+      box-shadow: 0 -3px $red-border;
+      background-image: linear-gradient(
+          80deg,
+          $red-dark 22px,
+          $red-border-internal 23px,
+          $red-border-internal 30px,
+          transparent 31px
+        ),
+        linear-gradient(
+          100deg,
+          transparent 196px,
+          $red-light 197px,
+          $red-light 202px,
+          $red-border-internal 203px,
+          $red-border-internal 211px,
+          $red-dark 212px,
+          $red-dark 204px,
+          $red-dark 212px,
+          $red 212px
+        ),
+        linear-gradient(
+          90deg,
+          $red-dark 30px,
+          $red-border-internal 30px,
+          $red-border-internal 38px,
+          $red-dark 38px,
+          $red-dark 50%,
+          $red 50%,
+          $red 180px,
+          $red-dark 180px,
+          $red-dark 186px,
+          $red-border-internal 186px,
+          $red-border-internal 194px,
+          $red 188px
+        );
+    }
+    .bottom {
+      @include box(240px, 19px);
+      @include patl(187px, 0);
+      overflow: hidden;
+      &::after {
+        @include pse(240px, 40px);
+        top: 0;
+        left: 0;
+        border-left: $bd solid $red-border;
+        border-right: $bd solid $red-border;
+        border-radius: 0% 0% 30% 30% / 0% 0% 100% 100%;
+        background-image: linear-gradient(
+            80deg,
+            $red-dark 29px,
+            $red-border-internal 30px,
+            $red-border-internal 37px,
+            transparent 38px
+          ),
+          linear-gradient(
+            100deg,
+            transparent 184px,
+            $red-light 186px,
+            $red-light 191px,
+            $red-border-internal 190px,
+            $red-border-internal 200px,
+            $red 201px
+          ),
+          linear-gradient(
+            90deg,
+            $red-dark 30px,
+            $red-border-internal 30px,
+            $red-border-internal 38px,
+            $red-dark 38px,
+            $red-dark 50%,
+            $red 50%,
+            $red 180px,
+            $red-dark 180px,
+            $red-dark 186px,
+            $red-border-internal 186px,
+            $red-border-internal 194px,
+            $red 188px
+          );
+      }
+    }
+  }
+
+  .mandible {
+    .part-1 {
+      @include box(224px, 53px);
+      @include patl(206px, 8px);
+      overflow: hidden;
+
+      &::after {
+        @include pse(224px, 294px);
+        top: -150px;
+        left: 0;
+        border-radius: 50%;
+        border: $bd solid $red-border;
+        background-image: radial-gradient($red-light 50%, transparent 50%),
+          linear-gradient(90deg, $red-dark 50%, $red 50%);
+        background-repeat: no-repeat;
+        background-size: 75px 99px, 100% 100%;
+        background-position: 129% 80%, 0 0;
+      }
+    }
+
+    .part-2 {
+      @include box(208px, 92px);
+      @include patl(259px, 16px);
+      overflow: hidden;
+
+      .left {
+        @include box(61px, 92px);
+        @include patl(0, 0);
+        overflow: hidden;
+
+        &::after {
+          height: 120px;
+          width: 120px;
+          content: "";
+          position: absolute;
+          top: -49px;
+          left: 20px;
+          border-radius: 10px;
+          background-color: $red-dark;
+          border: $bd solid $red-border;
+          transform: rotate(-35deg);
+        }
+      }
+
+      .right {
+        @include box(61px, 92px);
+        @include patr(0, 0);
+        overflow: hidden;
+
+        &::after {
+          height: 120px;
+          width: 120px;
+          content: "";
+          position: absolute;
+          top: -49px;
+          right: 20px;
+          border-radius: 10px;
+          background-color: $red;
+          border: $bd solid $red-border;
+          transform: rotate(35deg);
+          background-image: radial-gradient($red-light 50%, transparent 50%),
+            radial-gradient($red-light 50%, transparent 50%);
+          background-repeat: no-repeat;
+          background-position: 60px 20px, 60px -70px;
+        }
+      }
+
+      .bottom {
+        @include box(86px, 92px);
+        @include patl(0, 61px);
+        overflow: hidden;
+
+        &::after {
+          @include pse(104px, 100px);
+          bottom: 0;
+          left: -9px;
+          border-radius: 0 0 23px 23px;
+          border: $bd solid $red-border;
+          background-color: $red;
+          background-image: linear-gradient(
+              80deg,
+              $red-dark 10%,
+              transparent 10%
+            ),
+            linear-gradient(-80deg, $red-light 10%, transparent 10%);
+        }
+      }
+    }
+  }
+
+  .inside {
+    @include box(164px, 196px);
+    @include patl(114px, 38px);
+    overflow: hidden;
+    border-radius: 25px;
+    border-top: $bd solid $red-border-internal;
+    z-index: 5;
+
+    &__center {
+      @include box(164px, 360px);
+      @include patl(-140px, 0);
+      background-color: $skin;
+      border-radius: 48%;
+      border: $bd solid $red-border-internal;
+      overflow: hidden;
+
+      .hair-1 {
+        @include box(18px, 24px);
+        @include patl(130px, -8px);
+        overflow: hidden;
+
+        &::after {
+          @include pse(67px, 96px);
+          top: -29px;
+          left: 12px;
+          border-radius: 50%;
+          box-shadow: -10px 0 0 $hair;
+        }
+      }
+
+      .hair-2 {
+        @include box(43px, 65px);
+        @include patr(105px, 45px);
+        border-radius: 50%;
+        box-shadow: inset -10px 0 0 $hair;
+        transform: rotate(-25deg);
+      }
+
+      .hair-3 {
+        @include box(43px, 65px);
+        @include patr(101px, 45px);
+        border-radius: 50%;
+        box-shadow: inset -10px 0 0 $hair;
+        transform: rotate(-20deg);
+      }
+
+      .hair-4 {
+        @include box(43px, 75px);
+        @include patr(106px, 9px);
+        border-radius: 50%;
+        box-shadow: inset -10px 0 0 $hair;
+        transform: rotate(5deg);
+      }
+
+      .hair-5 {
+        @include box(43px, 65px);
+        @include patr(113px, -28px);
+        border-radius: 50%;
+        box-shadow: inset -12px 0 0 $hair;
+        transform: rotate(-150deg);
+      }
+
+      .hair-6 {
+        @include box(18px, 24px);
+        @include patr(130px, -8px);
+        overflow: hidden;
+
+        &::after {
+          @include pse(67px, 96px);
+          top: -29px;
+          right: 12px;
+          border-radius: 50%;
+          box-shadow: 10px 0 0 $hair;
+        }
+      }
+
+      .left-eyebrow {
+        @include box(56px, 30px);
+        @include patl(170px, 8px);
+
+        border-radius: 5px 0 0 0;
+        overflow: hidden;
+
+        &::before {
+          @include pse(103px, 37px);
+          top: 0;
+          right: 0;
+          border-radius: 50%;
+          box-shadow: inset -5px 7px 0 $hair;
+        }
+
+        &::after {
+          @include pse(56px, 9px);
+          top: 3px;
+          left: 0;
+          border-radius: 6px 0 0 4px;
+          border-left: 2px solid $hair;
+        }
+      }
+
+      .right-eyebrow {
+        @include box(56px, 26px);
+        @include patr(170px, 3px);
+
+        &::before {
+          @include pse(9px, 30px);
+          top: -2px;
+          left: 8px;
+          background-color: $hair;
+          border-radius: 51% 50% 17% 61% / 70% 70% 30% 30%;
+          transform: rotate(45deg);
+        }
+
+        &::after {
+          @include pse(54px, 42px);
+          top: 0;
+          right: 0;
+          border-radius: 50%;
+          box-shadow: inset -4px 7px 0 $hair;
+          transform: rotate(-20deg);
+        }
+      }
+
+      .nouse {
+        @include box(15px, 60px);
+        @include patr(200px, 58px);
+        border-bottom: 5px solid transparent;
+        border-top: 55px solid transparent;
+        border-left: 15px solid $skin-shadow;
+      }
+
+      .beard {
+        @include box(84px, 22px);
+        @include patl(256px, 32px);
+
+        &::after {
+          @include pse(30px, 20px);
+          top: 31px;
+          left: 28px;
+          border-radius: 45% 45% 55% 54% / 27% 27% 100% 100%;
+          border-top: 12px solid $hair;
+        }
+
+        .left {
+          @include box(46px, 30px);
+          @include patl(5px, 0px);
+          border-radius: 14px 7px 0 0;
+          border-top: 12px solid $hair;
+          transform: rotate(-10deg);
+
+          &::after {
+            @include pse(26px, 30px);
+            top: 5px;
+            left: -22px;
+            border-radius: 0 18px 0 0;
+            border-top: 12px solid $hair;
+            transform: rotate(-90deg);
+          }
+        }
+
+        .right {
+          @include box(46px, 30px);
+          @include patr(5px, 0px);
+          border-radius: 7px 14px 0 0;
+          border-top: 12px solid $hair;
+          transform: rotate(10deg);
+
+          &::after {
+            @include pse(26px, 30px);
+            top: 5px;
+            right: -22px;
+            border-radius: 18px 0 0 0;
+            border-top: 12px solid $hair;
+            transform: rotate(90deg);
+          }
+        }
+      }
+    }
+
+    &__bottom {
+      @include box(94px, 70px);
+      @include patl(160px, 35px);
+      border-radius: 35px;
+      background-color: $red;
+      border: $bd solid $red-border-internal;
+    }
+  }
+
+  .mask-container {
+    @include box(214px, 298px);
+    @include patl(31px, 12px);
+    z-index: 6;
+    perspective: 1000px;
+    perspective-origin: top center;
+
+    .mask-check {
+      display: none;
+    }
+
+    .mask {
+      @include box(214px, 298px);
+      @include patl(0, 0);
+      overflow: hidden;
+      animation: close 1s linear forwards;
+      cursor: pointer;
+
+      .top {
+        @include box(200px, 84px);
+        @include patl(0, 7px);
+
+        .left {
+          @include box(72px, 86px);
+          @include patl(12px, 7px);
+          border-radius: 10% 10% 0% 0% / 100% 100% 0% 0%;
+          border-radius: 12px 12px 0 0;
+          border: $bd solid $gold-border;
+          border-bottom: none;
+          background-color: $gold-light;
+          box-shadow: inset 9px 0 0 $gold-dark, inset 51px -7px 0 $gold;
+          transform: skewy(-20deg) rotate(-5deg);
+
+          &::before {
+            @include pse(5px, 20px);
+            top: 54px;
+            right: 0;
+            background-color: $gold-light;
+            border-radius: 0 0 0 10px;
+          }
+
+          &::after {
+            @include pse(7px, 10px);
+            top: 4px;
+            left: 22px;
+            background-color: $gold-border;
+            border-radius: 50%;
+            transform: skewy(20deg) rotate(5deg);
+          }
+        }
+
+        .right {
+          @include box(72px, 86px);
+          @include patr(12px, 7px);
+          border-radius: 10% 10% 0% 0% / 100% 100% 0% 0%;
+          border-radius: 12px 12px 0 0;
+          border: $bd solid $gold-border;
+          border-bottom: none;
+          background-color: $gold-dark;
+          box-shadow: inset -8px 0 0 $gold-light, inset -50px -6px 0 $gold;
+          transform: skewy(20deg) rotate(5deg);
+
+          &::before {
+            @include pse(5px, 20px);
+            top: 56px;
+            background-color: $gold-dark;
+            border-radius: 0 0 10px 0;
+          }
+
+          &::after {
+            @include pse(7px, 10px);
+            top: 4px;
+            left: 22px;
+            background-color: $gold-border;
+            border-radius: 50%;
+            transform: skewy(-20deg) rotate(-5deg);
+          }
+        }
+
+        .center {
+          @include box(160px, 82px);
+          @include patl(80px, 20px);
+          background-image: linear-gradient(
+              20deg,
+              $gold-dark 22px,
+              transparent 22px
+            ),
+            linear-gradient(-20deg, $gold-light 22px, transparent 22px),
+            linear-gradient(-80deg, $gold-light 17px, transparent 18px),
+            linear-gradient(80deg, $gold-dark 17px, transparent 18px),
+            linear-gradient(transparent 3px, $gold 3px);
+          border-radius: 0 0 50% 50%;
+          border-bottom: $bd solid $gold-border;
+          z-index: 1;
+
+          &::after {
+            @include pse(50px, 14px);
+            top: -8px;
+            left: 55px;
+            border-bottom: $bd solid $gold-border;
+            border-radius: 10px;
+            z-index: 1;
+          }
+        }
+      }
+
+      .mid-1 {
+        @include box(214px, 68px);
+        @include patl(108px, 0);
+
+        .left {
+          @include box(60px, 70px);
+          @include patl(0, 0);
+
+          &::after {
+            @include pse(60px, 34px);
+            left: 8px;
+            top: 0;
+            border-left: $bd solid $gold-border;
+            background-color: $gold-dark;
+            transform: skew(-30deg);
+          }
+
+          &::before {
+            @include pse(60px, 38px);
+            left: 8px;
+            top: 32px;
+            border-left: $bd solid $gold-border;
+            background-color: $gold-dark;
+            transform: skew(30deg);
+          }
+        }
+
+        .right {
+          @include box(60px, 70px);
+          @include patr(0, 0);
+
+          &::after {
+            @include pse(60px, 34px);
+            right: 8px;
+            top: 0;
+            border-right: $bd solid $gold-border;
+            background-color: $gold-light;
+            transform: skew(30deg);
+          }
+
+          &::before {
+            @include pse(60px, 38px);
+            right: 8px;
+            top: 32px;
+            border-right: $bd solid $gold-border;
+            background-color: $gold-light;
+            transform: skew(-30deg);
+          }
+        }
+
+        .left-eye {
+          @include box(73px, 35px);
+          @include patl(29px, 24px);
+          z-index: 8;
+
+          &::before {
+            @include pse(14px, 38px);
+            top: -15px;
+            left: 5px;
+            transform: rotate(-30deg);
+            background-color: $gold-dark;
+          }
+
+          .top {
+            @include box(72px, 15px);
+            @include patl(7px, 0.5px);
+            border-radius: 10% 90% 9% 0% / 100% 41% 59% 0%;
+            background-color: #333;
+            transform: rotate(10deg);
+            animation: on-top-light 3s linear forwards;
+          }
+
+          .bottom {
+            @include box(73px, 20px);
+            @include patl(15px, 0px);
+            border-radius: 0% 8% 24% 48% / 0% 20% 80% 100%;
+            background-color: #333;
+            box-shadow: 3px 5px 0 -2px $gold-dark;
+            animation: on-bottom-light 3s linear forwards;
+          }
+        }
+
+        .right-eye {
+          @include box(73px, 35px);
+          @include patr(29px, 24px);
+          transform: scalex(-1);
+          z-index: 8;
+
+          &::before {
+            @include pse(14px, 38px);
+            top: -15px;
+            left: 5px;
+            transform: rotate(-30deg);
+            background-color: $gold-light;
+          }
+
+          .top {
+            @include box(72px, 15px);
+            @include patl(7px, 0.5px);
+            border-radius: 10% 90% 9% 0% / 100% 41% 59% 0%;
+            background-color: #333;
+            transform: rotate(10deg);
+            animation: on-top-light 3s linear forwards;
+          }
+
+          .bottom {
+            @include box(73px, 20px);
+            @include patl(15px, 0px);
+            border-radius: 0% 8% 24% 48% / 0% 20% 80% 100%;
+            background-color: #333;
+            box-shadow: 3px 5px 0 -2px $gold-dark;
+            animation: on-bottom-light 3s linear forwards;
+          }
+        }
+
+        .center {
+          @include box(132px, 35px);
+          @include patl(35px, 40px);
+          background-color: $gold;
+          z-index: 0;
+          background-image: linear-gradient(
+              -70deg,
+              $gold-light 12px,
+              transparent 13px
+            ),
+            linear-gradient(70deg, $gold-dark 12px, transparent 13px);
+        }
+      }
+
+      .mid-2 {
+        @include box(178px, 74px);
+        @include patl(176px, 18px);
+
+        .left {
+          @include box(64px, 74px);
+          @include patl(0, 0);
+          overflow: hidden;
+          &::after {
+            @include pse(80px, 74px);
+            left: 12px;
+            background-color: $gold-dark;
+            border-left: $bd solid $gold-border;
+            transform: skewx(18deg);
+          }
+        }
+
+        .right {
+          @include box(64px, 74px);
+          @include patr(0, 0);
+          overflow: hidden;
+          &::after {
+            @include pse(80px, 74px);
+            right: 12px;
+            background-color: $gold-light;
+            border-right: $bd solid $gold-border;
+            transform: skewx(-18deg);
+          }
+        }
+
+        .center {
+          @include box(114px, 74px);
+          @include patl(0, 32px);
+          background-color: $gold;
+          background-image: linear-gradient(
+              -80deg,
+              $gold-light 23px,
+              transparent 24px
+            ),
+            linear-gradient(80deg, $gold-dark 22px, transparent 23px);
+        }
+      }
+
+      .bottom {
+        @include box(134px, 44px);
+        @include patl(250px, 40px);
+
+        .left {
+          @include box(38px, 46px);
+          @include patl(0, 0);
+          overflow: hidden;
+          &::after {
+            @include pse(50px, 68px);
+            left: 9px;
+            top: -23px;
+            border-radius: 20px;
+            transform: rotate(-40deg);
+            background-color: $gold-dark;
+            border: $bd solid $gold-border;
+          }
+        }
+
+        .right {
+          @include box(38px, 46px);
+          @include patr(0, 0);
+          overflow: hidden;
+          &::after {
+            @include pse(50px, 68px);
+            right: 9px;
+            top: -23px;
+            border-radius: 20px;
+            transform: rotate(40deg);
+            background-color: $gold-light;
+            border: $bd solid $gold-border;
+          }
+        }
+
+        .center {
+          @include box(58px, 46px);
+          @include patl(0, 38px);
+
+          border-top: $bd solid $gold-border;
+
+          &::before {
+            @include pse(66px, 32px);
+            left: -4px;
+            background-color: $gold;
+          }
+          &::after {
+            @include pse(66px, 46px);
+            left: -4px;
+            top: 26px;
+            border-top: $bd solid $gold-border;
+            box-shadow: -3px 0 0 0 $gold-border, 3px 0 0 0 $gold-border;
+            border-radius: 15px;
+          }
+        }
+      }
+
+      .left-triangle {
+        @include box(30px, 8px);
+        @include patl(247px, 38px);
+        background-color: $gold-border;
+        transform: rotate(50deg);
+        border-radius: 0 0 8px 0;
+        z-index: 10;
+
+        &::after {
+          @include pse(24px, 8px);
+          left: 18px;
+          top: -8px;
+          background-color: $gold-border;
+          transform: rotate(-70deg);
+          border-radius: 0 3px 0 6px;
+        }
+      }
+
+      .right-triangle {
+        @include box(30px, 8px);
+        @include patr(247px, 38px);
+        background-color: $gold-border;
+        transform: rotate(-50deg);
+        border-radius: 0 0 0 8px;
+        z-index: 10;
+
+        &::after {
+          @include pse(24px, 8px);
+          right: 18px;
+          top: -8px;
+          background-color: $gold-border;
+          transform: rotate(70deg);
+          border-radius: 2px 0 6px 0;
+        }
+      }
+    }
+        
+    .mask-check:checked + .mask {
+      animation: open 1s linear forwards;
+    }
+
+    .mask-check:checked + .mask > .top + .mid-1 .right-eye > .top {
+      animation: off-top-light 0.5s linear forwards;
+    }
+
+    .mask-check:checked + .mask > .top + .mid-1 .left-eye > .top {
+      animation: off-top-light 0.5s linear forwards;
+    }
+
+    .mask-check:checked + .mask > .top + .mid-1 .right-eye > .bottom {
+      animation: off-bottom-light 0.5s linear forwards;
+    }
+
+    .mask-check:checked + .mask > .top + .mid-1 .left-eye > .bottom {
+      animation: off-bottom-light 0.5s linear forwards;
+    }
+  }
+}
+
+@keyframes open {
+  from {
+    transform: rotateX(0deg);
+    top: 0;
+  }
+  to {
+    transform: rotateX(60deg);
+    top: -120px;
+  }
+}
+
+@keyframes close {
+  from {
+    transform: rotateX(60deg);
+    top: -120px;
+  }
+  to {
+    transform: rotateX(0deg);
+    top: 0;
+  }
+}
+
+@keyframes on-top-light {
+  from {
+    background-color: #222;
+    box-shadow: none;
+  }
+  to {
+    background-color: white;
+    box-shadow: 0 0 10px 5px $blue;
+  }
+}
+
+@keyframes off-top-light {
+  from {
+    background-color: white;
+    box-shadow: 0 0 10px 2px $blue;
+  }
+  to {
+    background-color: #222;
+    box-shadow: none;
+  }
+}
+
+@keyframes off-bottom-light {
+  from {
+    background-color: white;
+    box-shadow: 0 4px 4px $blue, 3px 5px 0 -2px $gold-dark;
+  }
+  to {
+    background-color: #222;
+    box-shadow: 3px 5px 0 -2px $gold-dark;
+  }
+}
+
+@keyframes on-bottom-light {
+  from {
+    background-color: #222;
+    box-shadow: 3px 5px 0 -2px $gold-dark;
+  }
+  to {
+    background-color: white;
+    box-shadow: 0 4px 4px $blue, 3px 5px 0 -2px $gold-dark;
+  }
+}
